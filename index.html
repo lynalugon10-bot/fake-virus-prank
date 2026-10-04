@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>System Scan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background: #080808;
+      color: #00ff66;
+      font-family: monospace;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    #warning {
+      display: none;
+      color: red;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 18px;
+      border: 0;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>🖥️ SYSTEM SECURITY SCAN</h1>
+
+  <p id="scan">Ready to scan...</p>
+
+  <button onclick="startScan()">START SCAN</button>
+
+  <div id="warning">
+    ⚠️ VIRUS DETECTED! ⚠️
+  </div>
+
+  <h2 id="result"></h2>
+
+  <script>
+    function startScan() {
+      let scan = document.getElementById("scan");
+      let warning = document.getElementById("warning");
+      let result = document.getElementById("result");
+
+      scan.innerHTML = "Scanning device... 0%";
+
+      let progress = 0;
+
+      let timer = setInterval(function() {
+        progress += 10;
+        scan.innerHTML = "Scanning device... " + progress + "%";
+
+        if (progress >= 100) {
+          clearInterval(timer);
+
+          warning.style.display = "block";
+
+          setTimeout(function() {
+            warning.innerHTML = "😂 HAHAHA ULOL!";
+            warning.style.color = "#00ff66";
+
+            result.innerHTML =
+              "PRANK LANG! 😆❤️<br><small>No virus detected.</small>";
+          }, 1500);
+        }
+      }, 300);
+    }
+  </script>
+
+</body>
+</html>
